@@ -1,4 +1,4 @@
-import { getBaseName } from '@redhat-cloud-services/frontend-components-utilities/files/helpers';
+import { getBaseName } from '@redhat-cloud-services/frontend-components-utilities/helpers';
 
 describe('Utilities/getBaseName', () => {
     it('should find the right base name on Stable ', () => {
