@@ -45,7 +45,7 @@ const initialState = {
     },
     rows: []
 };
-const sortIndices = { 2: 'IS_DISABLED', 3: 'HOST_COUNT', 4: 'HAS_MATCH' };
+const sortIndices = { 1: 'NAME', 2: 'IS_DISABLED', 3: 'HOST_COUNT', 4: 'HAS_MATCH' };
 const orderBy = ({ index, direction }) => `${sortIndices[index]}_${direction === SortByDirection.asc ? 'ASC' : 'DESC'}`;
 
 const tableReducer = (state, action) => {
@@ -69,7 +69,7 @@ const SigTable = () => {
     const { data: sigTableData, loading: sigTableLoading, error: sigTableError } =
         useQuery(GET_SIGNATURE_TABLE, { variables: { ...tableVars, ...useReactiveVar(sigTableFilters) } });
     const columns = [
-        { title: intl.formatMessage(messages.sigName), cellFormatters: [expandable], transforms: [cellWidth(45)] },
+        { title: intl.formatMessage(messages.sigName), cellFormatters: [expandable], transforms: [cellWidth(45), sortable] },
         { title: intl.formatMessage(messages.status), transforms: [sortable] },
         { title: intl.formatMessage(messages.hosts), transforms: [sortable] },
         { title: intl.formatMessage(messages.matched), transforms: [sortable] }
